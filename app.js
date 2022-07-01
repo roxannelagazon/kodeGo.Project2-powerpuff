@@ -171,6 +171,6 @@ newConnection.connect(function(error) {
         console.log(err)
     }
 })
-app.listen(port, () => {
+app.listen(process.env.PORT || port, function() {
     console.log(`Port is now running at ${port}`)
 })
