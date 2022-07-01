@@ -13,7 +13,7 @@ const userviewRouter = require('./routes/uview.js')
 const session = require('express-session');
 const path = require('path');
 
-const port = 3001
+const port = 80
 const app = express()
  
 //MIDDLEWARE AND VIEWS
