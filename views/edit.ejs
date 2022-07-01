@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <title>Cars - Kodego</title>
+    
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- FontAwesome JS-->
+    <script defer src="/plugins/fontawesome/js/all.min.js"></script>
+    
+    <!-- App CSS -->  
+    <link id="theme-style" rel="stylesheet" href="/css/portal.css">
+
+    <link id="theme-style" rel="stylesheet" href="/css/cars.css">
+</head> 
+
+<body class="app">   	
+    <%- include('partials/sidepanel.ejs') %>    
+    <div class="app-wrapper">
+	    
+	    <div class="app-content pt-3 p-md-3 p-lg-4">
+		    <div class="container-xl">
+                <div class="heading">
+                    <h1 class="app-page-title"><%=header%></h1>
+                </div>
+			    
+                
+                <div class="row g-4 settings-section">
+	                <div class="col-12 col-md-12">
+		                <div class="app-card app-card-settings shadow-sm p-4">
+						    
+						    <div class="app-card-body">
+							    <form class="settings-form" action="/save" method="post" enctype="multipart/form-data">
+                                    <div class="mb-3">
+                                        <label for="setting-input-1" class="form-label">ID</label>
+                                        <input required type="number" class="form-control" id="ID" name="ID" value="<%= records.ID%>" disabled>
+                                    </div>
+									<div class="mb-3">
+									    <label for="setting-input-1" class="form-label">Image</label>
+										<div class="car-placeholder mb-3">
+											<img src="/uploads/<%= records.IMAGE%>" />
+											<input type="hidden" name="OLDIMAGE" value="<%= records.IMAGE%>" />
+										</div>
+									    <input type="file" name="IMAGE" value="<%= records.IMAGE%>" />
+									</div>
+								    <div class="mb-3">
+									    <label for="setting-input-1" class="form-label">Vehicle Name</label>
+									    <input type="text" class="form-control" id="setting-input-1" name="CAR_NAME" value="<%= records.CAR_NAME%>" required="">
+									</div>
+									<div class="mb-3">
+									    <label for="setting-input-2" class="form-label">Brand</label>
+									    <input type="text" class="form-control" id="setting-input-2" name="BRAND" value="<%= records.BRAND%>" required="">
+									</div>
+								    <div class="mb-3">
+									    <label for="setting-input-3" class="form-label">Body Type</label>
+									    <input type="text" class="form-control" id="setting-input-3" name="BODY_TYPE" value="<%= records.BODY_TYPE%>" required="">
+									</div>
+                                    <div class="mb-3">
+									    <label for="setting-input-3" class="form-label">Year</label>
+									    <input type="number" class="form-control" id="setting-input-4" name="YEAR" value="<%= records.YEAR%>" placeholder="2022" required="">
+									</div>
+                                    <div class="mb-3">
+									    <label for="setting-input-3" class="form-label">Transmission</label>
+									    <input type="text" class="form-control" id="setting-input-5" name="TRANSMISSION" value="<%= records.TRANSMISSION%>" required="">
+									</div>
+                                    <div class="mb-3">
+									    <label for="setting-input-3" class="form-label">Fuel Type</label>
+									    <input type="text" class="form-control" id="setting-input-6" name="TYPE" value="<%= records.TYPE%>" required="">
+									</div>
+                                    <div class="mb-3">
+									    <label for="setting-input-3" class="form-label">Engine</label>
+									    <input type="text" class="form-control" id="setting-input-7" name="ENGINE" value="<%= records.ENGINE%>" required="">
+									</div>
+                                    <div class="mb-3">
+									    <label for="setting-input-3" class="form-label">Seat Capacity</label>
+									    <input type="number" class="form-control" id="setting-input-8" name="SEAT" value="<%= records.SEAT%>" required="">
+									</div>
+                                    <div class="mb-3">
+									    <label for="setting-input-3" class="form-label">Color</label>
+									    <input type="text" class="form-control" id="setting-input-9" name="COLOR" value="<%= records.COLOR%>" required="">
+									</div>
+                                    <div class="mb-3">
+									    <label for="setting-input-3" class="form-label">Condition</label>
+									    <input type="text" class="form-control" id="setting-input-10" name="CONDITION" value="<%= records.CONDITION%>" required="">
+									</div>
+									<button type="submit" class="btn app-btn-primary">Save Changes</button>
+							    </form>
+						    </div><!--//app-card-body-->
+						    
+						</div><!--//app-card-->
+	                </div>
+                </div>
+		    </div><!--//container-fluid-->
+	    </div><!--//app-content-->    
+    </div><!--//app-wrapper-->    					
+ 
+    <!-- Javascript -->          
+    <script src="/plugins/popper.min.js"></script>
+    <script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+	
+	<script src="js/app.js"></script> 
+</body>
+</html>

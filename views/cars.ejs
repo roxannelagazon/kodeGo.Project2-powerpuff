@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <title>Cars - Kodego</title>
+    
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- FontAwesome JS-->
+    <script defer src="plugins/fontawesome/js/all.min.js"></script>
+    
+    <!-- App CSS -->  
+    <link id="theme-style" rel="stylesheet" href="/css/portal.css">
+
+    <!--JQuery CDN-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!--Sweet Alert CDN-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link id="theme-style" rel="stylesheet" href="/css/cars.css">
+</head> 
+
+<body class="app">   	
+    <%- include('partials/sidepanel.ejs') %>    
+    <div class="app-wrapper">
+	    
+	    <div class="app-content pt-3 p-md-3 p-lg-4">
+		    <div class="container-xl">
+                <div class="heading">
+                    <h1 class="app-page-title"><%=header%></h1> <a href="/add" class="btn btn-success text-white">Add New Record</a>
+                </div>
+			    
+                
+                <div class="app-card app-card-orders-table shadow-sm mb-5">
+                    <div class="app-card-body">
+                        <div class="table-responsive">
+                            <table class="table app-table-hover mb-0 text-left">
+                                <thead>
+                                    <tr>
+                                        <th class="cell">Details</th>
+                                        <th class="cell text-center">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <%records.forEach(function(cars){ %>
+                                    <tr>
+                                        <td class="cell">
+                                           <div class="car-wrap">
+                                            <div class="car-placeholder">
+                                                <img src="uploads/<%= cars.IMAGE%>" />
+                                               </div>
+                                               <div class="car-description">
+                                                <strong>RECORD #:</strong> <%= cars.ID%><br />
+                                                <strong>VEHICLE:</strong> <%= cars.CAR_NAME%>
+                                                <ul class="cars-info mt-3">
+                                                    <li><strong>SEAT CAPACITY: </strong><%= cars.SEAT%></li>
+                                                    <li><strong>COLOR: </strong><%= cars.COLOR%></li>
+                                                    <li><strong>BRAND: </strong><%= cars.BRAND%></li>
+                                                    <li><strong>BODY TYPE: </strong><%= cars.BODY_TYPE%></li>
+                                                    <li><strong>Year: </strong><%= cars.YEAR%></li>
+                                                    <li><strong>Transmission: </strong><%= cars.TRANSMISSION%></li>
+                                                    <li><strong>Fuel Type: </strong><%= cars.TYPE%></li>
+                                                </ul>
+                                               </div>
+                                           </div>
+                                        </td>
+                                        <td class="align-middle text-center"> 
+                                            <a href="/view/<%= cars.ID%>" class="mx-1">
+                                                <i class="fa-solid fa-eye"></i>
+                                            </a> 
+                                            <a href="/edit/<%= cars.ID%>" class="mx-1">
+                                                <i class="fa-solid fa-pencil"></i>
+                                            </a> 
+                                            <a href="/delete/<%= cars.ID%>" class="mx-1 delete">
+                                                <i class="fa-solid fa-trash-can"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <%}) %>
+                                </tbody>
+                            </table>
+                        </div><!--//table-responsive-->
+                       
+                    </div><!--//app-card-body-->		
+                </div><!--//app-card-->
+		    </div><!--//container-fluid-->
+	    </div><!--//app-content-->    
+    </div><!--//app-wrapper-->    					
+    <% if(isAdd) {%>
+        <script>
+            Swal.fire(
+                'Added New Record!',
+                'New File is added',
+                'success'
+            )
+        </script>
+    <% } %>
+            <script>
+                $('.delete').on('click', function(e) {
+                    e.preventDefault();
+                    var self = $(this);
+                    console.log(self.data('title'));
+                    Swal.fire({
+                        title: 'Confirmation of Deleting the Record',
+                        text: "Changes will be Permanent",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: 'Red',
+                        cancelButtonColor: 'Green',
+                        confirmButtonText: 'Yes, delete it!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                            location.href = self.attr('href');
+                        }
+                    })
+                })
+            </script>
+ 
+    <!-- Javascript -->          
+    <script src="plugins/popper.min.js"></script>
+    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="js/app.js"></script> 
+</body>
+</html>

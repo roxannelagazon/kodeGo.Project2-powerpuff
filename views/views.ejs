@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <title>Cars - Kodego</title>
+    
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- FontAwesome JS-->
+    <script defer src="/plugins/fontawesome/js/all.min.js"></script>
+    
+    <!-- App CSS -->  
+    <link id="theme-style" rel="stylesheet" href="/css/portal.css">
+
+    <link id="theme-style" rel="stylesheet" href="/css/cars.css">
+</head> 
+
+<body class="app">   	
+    <%- include('partials/sidepanel.ejs') %>    
+    <div class="app-wrapper">
+	    
+	    <div class="app-content pt-3 p-md-3 p-lg-4">
+		    <div class="container-xl">
+                <div class="heading">
+                    <h1 class="app-page-title"><%=header%></h1>
+                </div>
+			    
+                <div class="row g-4 settings-section">
+	                <div class="col-12 col-md-4">
+						<div class="car-placeholder mb-3">
+							<img src="/uploads/<%= records.IMAGE%>" />
+			
+						</div>
+						<p class="fw-bold">Record: #<%= records.ID%></p>
+		                <h3 class="section-title">Vehicle: <%= records.CAR_NAME%></h3>
+	                </div>
+	                <div class="col-12 col-md-8">
+		                <div class="app-card app-card-settings shadow-sm p-4">
+						    
+						    <div class="app-card-body">
+								<div class="row">
+									<div class="col-12 col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Brand</label>
+											<div><%= records.BRAND%></div>
+										</div>
+										<div class="mb-3">
+											<label class="form-label">Body Type</label>
+											<div><%= records.BODY_TYPE%></div>
+										</div>
+										<div class="mb-3">
+											<label class="form-label">Year</label>
+											<div><%= records.YEAR%></div>
+										</div>
+										<div class="mb-3">
+											<label class="form-label">Transmission</label>
+											<div><%= records.TRANSMISSION%></div>
+										</div>
+									</div>
+									<div class="col-12 col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Type</label>
+											<div><%= records.TYPE%></div>
+										</div>
+										<div class="mb-3">
+											<label class="form-label">Engine</label>
+											<div><%= records.ENGINE%></div>
+										</div>
+										<div class="mb-3">
+											<label class="form-label">Seat</label>
+											<div><%= records.SEAT%></div>
+										</div>
+										<div class="mb-3">
+											<label class="form-label">Color</label>
+											<div><%= records.COLOR%></div>
+										</div>
+									</div>
+								</div>
+								<div class="col-12 col-md-12">
+									<div class="mb-3">
+									    <label class="form-label">Condition</label>
+										<div><%= records.CONDITION%></div>
+									</div>
+								</div>
+						    </div><!--//app-card-body-->
+						    
+						</div><!--//app-card-->
+	                </div>
+                </div>
+		    </div><!--//container-fluid-->
+	    </div><!--//app-content-->    
+    </div><!--//app-wrapper-->    					
+ 
+    <!-- Javascript -->          
+    <script src="/plugins/popper.min.js"></script>
+    <script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+	<script src="js/app.js"></script> 
+</body>
+</html>
